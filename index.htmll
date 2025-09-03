@@ -12,7 +12,8 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background: linear-gradient(135deg, #ff6b6b, #f94d6a, #c73866);
+      background: black;
+      overflow: hidden;
       color: white;
       text-align: center;
     }
@@ -24,17 +25,42 @@
       font-size: 1.5rem;
     }
     .box {
-      background: rgba(0, 0, 0, 0.4);
+      background: rgba(0, 0, 0, 0.5);
       padding: 40px;
       border-radius: 20px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+    /* Csillagok */
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: twinkle 2s infinite alternate;
+    }
+    @keyframes twinkle {
+      from { opacity: 0.2; }
+      to { opacity: 1; }
     }
   </style>
 </head>
 <body>
   <div class="box">
-    <h1>Never want him back 🚫</h1>
-    <p>Ez az én ingyenes oldalam, csak ennyi! 🎉</p>
+    <h1> orokke utalni foglak </h1>
+    <p> sose fogok neked megbocsatani </p>
   </div>
+
+  <script>
+    // Generáljunk csillagokat
+    const numStars = 100;
+    for(let i=0; i<numStars; i++){
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.width = star.style.height = Math.random()*3 + 1 + 'px';
+      star.style.top = Math.random()*100 + 'vh';
+      star.style.left = Math.random()*100 + 'vw';
+      document.body.appendChild(star);
+    }
+  </script>
 </body>
 </html>
