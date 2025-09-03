@@ -22,10 +22,14 @@
       font-size: 3rem;
       margin-bottom: 10px;
       animation: glow 2s infinite alternate;
+      z-index: 2;
+      position: relative;
     }
 
     p {
       font-size: 1.5rem;
+      z-index: 2;
+      position: relative;
     }
 
     .box {
@@ -34,7 +38,7 @@
       border-radius: 20px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.3);
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
 
     @keyframes glow {
@@ -54,15 +58,27 @@
       from { opacity: 0.2; }
       to { opacity: 1; }
     }
+
+    .fairy {
+      position: absolute;
+      font-size: 1.5rem;
+      animation: jump 3s infinite ease-in-out;
+    }
+
+    @keyframes jump {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
   </style>
 </head>
 <body>
   <div class="box">
-    <h1>orokke utalni foglak</h1>
-    <p>semmi nem emlekeztet mar rad</p>
+    <h1>soha nem fogok neked megbocsatani</h1>
+    <p>orokre szol</p>
   </div>
 
   <script>
+    // Csillagok generálása
     const numStars = 150;
     for(let i = 0; i < numStars; i++){
       const star = document.createElement('div');
@@ -79,11 +95,23 @@
     setInterval(() => {
       stars.forEach(star => {
         let top = parseFloat(star.style.top);
-        top += 0.05; // sebesség
+        top += 0.05;
         if(top > 100) top = 0;
         star.style.top = top + 'vh';
       });
     }, 50);
+
+    // Emoji tündérek generálása
+    const numFairies = 8;
+    for(let i = 0; i < numFairies; i++){
+      const fairy = document.createElement('div');
+      fairy.className = 'fairy';
+      fairy.textContent = '🧚';
+      fairy.style.top = Math.random() * 80 + 'vh';
+      fairy.style.left = Math.random() * 95 + 'vw';
+      fairy.style.animationDelay = (Math.random() * 3) + 's';
+      document.body.appendChild(fairy);
+    }
   </script>
 </body>
 </html>
