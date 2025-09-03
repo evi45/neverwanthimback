@@ -16,20 +16,21 @@
       overflow: hidden;
       color: white;
       text-align: center;
+      position: relative;
     }
 
     h1 {
       font-size: 3rem;
       margin-bottom: 10px;
       animation: glow 2s infinite alternate;
-      z-index: 2;
       position: relative;
+      z-index: 2;
     }
 
     p {
       font-size: 1.5rem;
-      z-index: 2;
       position: relative;
+      z-index: 2;
     }
 
     .box {
@@ -38,7 +39,7 @@
       border-radius: 20px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.3);
       position: relative;
-      z-index: 2;
+      z-index: 1; /* kisebb, mint a tündérek */
     }
 
     @keyframes glow {
@@ -52,6 +53,7 @@
       border-radius: 50%;
       opacity: 0.8;
       animation: twinkle 2s infinite alternate;
+      z-index: 0;
     }
 
     @keyframes twinkle {
@@ -63,6 +65,7 @@
       position: absolute;
       font-size: 1.5rem;
       animation: jump 3s infinite ease-in-out;
+      z-index: 3; /* nagyobb, mint a doboz */
     }
 
     @keyframes jump {
@@ -73,8 +76,8 @@
 </head>
 <body>
   <div class="box">
-    <h1>soha nem fogok neked megbocsatani</h1>
-    <p>orokre szol</p>
+    <h1>orokke utalni foglak</h1>
+    <p>soha nem fogok neked megbocsatani</p>
   </div>
 
   <script>
@@ -103,6 +106,7 @@
 
     // Emoji tündérek generálása
     const numFairies = 8;
+    const fairyArray = [];
     for(let i = 0; i < numFairies; i++){
       const fairy = document.createElement('div');
       fairy.className = 'fairy';
@@ -111,7 +115,24 @@
       fairy.style.left = Math.random() * 95 + 'vw';
       fairy.style.animationDelay = (Math.random() * 3) + 's';
       document.body.appendChild(fairy);
+      fairyArray.push(fairy);
     }
+
+    // Tündérek véletlenszerű mozgatása
+    setInterval(() => {
+      fairyArray.forEach(fairy => {
+        let top = parseFloat(fairy.style.top);
+        let left = parseFloat(fairy.style.left);
+        top += (Math.random() - 0.5) * 1; // fel-le
+        left += (Math.random() - 0.5) * 1; // jobbra-balra
+        if(top < 0) top = 0;
+        if(top > 90) top = 90;
+        if(left < 0) left = 0;
+        if(left > 95) left = 95;
+        fairy.style.top = top + 'vh';
+        fairy.style.left = left + 'vw';
+      });
+    }, 100);
   </script>
 </body>
 </html>
