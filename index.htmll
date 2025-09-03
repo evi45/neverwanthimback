@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <title>neverwanthimback.eu</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff6b6b, #f94d6a, #c73866);
+      color: white;
+      text-align: center;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 1.5rem;
+    }
+    .box {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>Never want him back 🚫</h1>
+    <p>Ez az én ingyenes oldalam, csak ennyi! 🎉</p>
+  </div>
+</body>
+</html>
